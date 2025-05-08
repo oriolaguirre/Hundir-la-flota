@@ -15,7 +15,7 @@ def controlColisiones(coordenadas,listaCoordenadasBarcos):#funcion incompleta
         return listaCoordenadasBarcos
 
 def generarPartida(barcos,barcosMaquina,tablero1,tablero2,contador):#funcion que va generando turnos entre el usuario y la maquina para ir posicionando los barcos
-    while contador <2:
+    while contador <6:
 
         barco = Clases.Barcos(list(input("Primera posicioncoordenadas?-->")),input("direccion?-->"),int(input("longitud?-->")))
         coordenada1 = random.randint(0,9)
