@@ -1,10 +1,10 @@
 import numpy as np,random,Clases,time
 
-def CrearTablero():
+def CrearTablero():#Esta función genera los tableros
    tablero = np.full((10,10),"_")
    return tablero
   
-def controlColisiones(coordenadas,listaCoordenadasBarcos):
+def controlColisiones(coordenadas,listaCoordenadasBarcos):#funcion incompleta
 
    
     if np.any([np.array_equal(barco, coord) for barco in coordenadas for coord in listaCoordenadasBarcos]):
@@ -14,10 +14,10 @@ def controlColisiones(coordenadas,listaCoordenadasBarcos):
             listaCoordenadasBarcos.append(coordenadas)
         return listaCoordenadasBarcos
 
-def generarPartida(barcos,barcosMaquina,tablero1,tablero2,contador):
+def generarPartida(barcos,barcosMaquina,tablero1,tablero2,contador):#funcion que va generando turnos entre el usuario y la maquina para ir posicionando los barcos
     while contador <2:
 
-        barco = Clases.Barcos(list(input("Primera posicioncoordenadas?")),input("direccion?"),int(input("longitud?")))
+        barco = Clases.Barcos(list(input("Primera posicioncoordenadas?-->")),input("direccion?-->"),int(input("longitud?-->")))
         coordenada1 = random.randint(0,9)
         coordenada2 = random.randint(0,9)
         direccionesListaMaquina = ["arriba","abajo","izquierda","derecha"]
@@ -34,9 +34,9 @@ def generarPartida(barcos,barcosMaquina,tablero1,tablero2,contador):
         contador +=1
     return(tablero1,tablero2)
 
-def ColocarBarcos(barcos,tablero): #pasarle lista de barcos, para recorrer todos los barcos
+def ColocarBarcos(barcos,tablero): #Funcion que coloca los barcos en funcin del punto inicial, direccion y longitud
     
-    for barco in barcos: # igual meto en otra funcion esta funcionalidad
+    for barco in barcos: 
         i,j = barco.posicion
         i = int(i)
         j = int(j)
@@ -70,7 +70,6 @@ def ColocarBarcos(barcos,tablero): #pasarle lista de barcos, para recorrer todos
     elif barco.direccion == "arriba": 
         for i in range(posicioni ,(posicioni - barco.longitud),-1):
             try: 
-                #aqui abriaque acer un apend de cada posicion i,j que recorre  a longitud_lista_barco, y llamar a a funcion controlarcolisiones
                 tablero[i,j] = "o"
             except:
                 print("fuera de rango")
@@ -99,7 +98,7 @@ def ColocarBarcos(barcos,tablero): #pasarle lista de barcos, para recorrer todos
         tablero[i,j] = "_"    
     return tablero
 
-def disparo(tablero,coordenadasDisparo1,coordenadasDisparo2):
+def disparo(tablero,coordenadasDisparo1,coordenadasDisparo2): #funcion que cambia los caracteres del tablero en funcion del acierto o no en los disparos
     
     if tablero[coordenadasDisparo1,coordenadasDisparo2] == "o":
         tablero[coordenadasDisparo1,coordenadasDisparo2] = "x"
@@ -112,7 +111,7 @@ def disparo(tablero,coordenadasDisparo1,coordenadasDisparo2):
         acierto = False
     return tablero ,acierto   
         
-def controladorTurnos(turno,tablero1,tablero2):
+def controladorTurnos(turno,tablero1,tablero2):#funcion que controla los turnos, tambienen funcion del acierto o no de los jugadores
 
     if turno == True:
         print("***-----------------***")
@@ -124,12 +123,14 @@ def controladorTurnos(turno,tablero1,tablero2):
         print("***-----------------***")
 
     if turno == True:
-        coordenadas_disparo1 = int(input("mete la fila"))
-        coordenadas_disparo2 = int(input("mete la columna"))
+        try:
+            coordenadas_disparo1 = int(input("mete la fila-->"))
+            coordenadas_disparo2 = int(input("mete la columna-->"))
+        except:
+            print("mete una coordenada valida")    
 
         tablero2,turno = disparo(tablero2,coordenadas_disparo1,coordenadas_disparo2)
           
-        
     else:
         
         coordenadas_disparo1_maquina = random.randint(0,9)
@@ -143,7 +144,7 @@ def controladorTurnos(turno,tablero1,tablero2):
              turno = True
     return turno         
 
-def RevisionEstadoPartida(tablero1,tablero2):
+def RevisionEstadoPartida(tablero1,tablero2):#funcion que evalua si alguien ha derribado todos los barcos o no
 
     tablero1 = np.where(tablero1 == 'o', 0, -1)
     tablero2 = np.where(tablero2 == 'o', 0, -1)
@@ -151,11 +152,12 @@ def RevisionEstadoPartida(tablero1,tablero2):
 
     if np.any(tablero2 == 0) == False:
         print("Ha ganado el usuario")
-    else:
+
+    elif np.any(tablero1 == 0) == False:
         print("ha ganado la maquina")    
     return tiene_cero
 
-def partida(tablero1,tablero2):
+def partida(tablero1,tablero2):#funcionde iteracion entre el usuario y la termninal
 
     print("***-----------------***")
     print("tablero de la maquina")
@@ -172,8 +174,3 @@ def partida(tablero1,tablero2):
         print("Mete un valor correcto, si o no para proceder con el juego")    
     return seguir
 
-"""
-
-arreglar prints
-
-"""
