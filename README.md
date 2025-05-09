@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/1fb6044a-6272-433a-a4e5-fd2caf92d9e3)
+
 # Hundir-la-flota
 Un proyecto interactivo desde terminal, que emula el clásico hundir la flota
 # Batalla Naval en Python
