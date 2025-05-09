@@ -1,4 +1,5 @@
-![image](https://github.com/user-attachments/assets/1fb6044a-6272-433a-a4e5-fd2caf92d9e3)
+![image](https://github.com/user-attachments/assets/f7693df1-58ec-4645-8603-0f2ea50a9c30)
+
 
 # Hundir-la-flota
 Un proyecto interactivo desde terminal, que emula el clásico hundir la flota
