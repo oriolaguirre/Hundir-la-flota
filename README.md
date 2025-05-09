@@ -6,7 +6,6 @@ Este proyecto es una implementación en Python del clásico juego de batalla nav
 
 ## Características
 - Tableros generados dinámicamente.
-- Colocación de barcos con control de colisiones.
 - Turnos alternos entre el jugador y la máquina.
 - Simulación de disparos con acierto y fallo.
 - Revisión automática del estado de la partida.
